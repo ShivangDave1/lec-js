@@ -1,6 +1,10 @@
 import React from 'react'
-import { Route } from 'react-router-dom'
+import { Route, Switch, Redirect } from 'react-router-dom'
 import './App.css'
+
+import SavedBlogsList from './Components/SavedBlogsList'
+
+
 import BlogsContainer from './Containers/BlogsContainer'
 import Navbar from './Components/Navbar'
 import SearchBlogs from './Components/SearchBlogs'
@@ -30,9 +34,16 @@ class App extends React.Component {
       <>
         <Navbar />
         <SearchBlogs searchBlog={this.searchBlog} />
-        <Route path="/" render={() => (
-          <BlogsContainer blogs={this.state.filteredBlogs}/>
-        )} />
+        
+        <Switch>
+          <Route path="/blogs/saved" component={SavedBlogsList} />
+          <Route path="/" render={() => (
+            <BlogsContainer blogs={this.state.filteredBlogs}/>
+          )} />
+          <Route>
+            <Redirect to="/" />
+          </Route>
+        </Switch>
       </>
     )
   }
