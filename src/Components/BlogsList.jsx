@@ -8,18 +8,21 @@ const useStyles = makeStyles(() => ({
   }
 }))
 
-function BlogsList({ blogs, blogCardClickHandler }) {
-  const classes = useStyles()
+const createBlogCards = ({ blogs, blogCardClickHandler }) => {
+  return blogs.map(blogObject => (
+    <BlogCard
+      key={blogObject.id}
+        blogObject={blogObject}
+          clickHandler={blogCardClickHandler}
+    />
+  ))
+}
 
-  function createBlogCards() {
-    return blogs.map(blogObject => (
-      <BlogCard key={blogObject.id} blogObject={blogObject} clickHandler={blogCardClickHandler} />
-    ))
-  }
-  
+const BlogsList = (props) => {
+  const classes = useStyles()
   return (
     <Grid className={classes.root} container spacing={3} >
-      {createBlogCards()}
+      { createBlogCards(props) }
     </Grid >
   )
 }

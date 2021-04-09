@@ -8,7 +8,7 @@ const useStyles = makeStyles(() => ({
     }
 }))
 
-function SavedBlogsList() {
+const SavedBlogsList = () => {
     const classes = useStyles()
 
     return (
