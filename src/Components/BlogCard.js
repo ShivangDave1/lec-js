@@ -25,11 +25,13 @@ const useStyles = makeStyles(() => ({
 })
 )
 
-function BlogCard({ blogObject, saveBlog, history }) {
+const localClickHandler = (history) => {
+  history.push("/blogs/saved")
+}
+
+const BlogCard = ({ blogObject, saveBlog, history }) => {
   const classes = useStyles()
-  function localClickHandler() {
-    history.push("/blogs/saved")
-  }
+
   return (
     <Grid item xs={3}>
       <Card className={classes.card}>
@@ -42,19 +44,25 @@ function BlogCard({ blogObject, saveBlog, history }) {
             title="blog image"
           />
         </CardActionArea>
+
         <CardContent>
           <Typography className={classes.title} variant="inherit" component="h5" gutterBottom align="center" color="textPrimary">
             {blogObject.title}
           </Typography>
         </CardContent>
+
         <CardActions className={classes.buttonsArea}>
-          <Button size="small" color="primary" onClick={localClickHandler}>
+          <Button size="small" color="primary" onClick={() => localClickHandler(history)}>
             Save
-        </Button>
-          <Button className={classes.button} component="a" href={blogObject.url} target="_blank" size="small" color="primary">
+          </Button>
+
+          <Button className={classes.button}
+            component="a" href={blogObject.url}
+              target="_blank" size="small" color="primary">
             Visit
-        </Button>
+          </Button>
         </CardActions>
+
       </Card>
     </Grid>
   )
