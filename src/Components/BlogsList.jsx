@@ -21,9 +21,9 @@ const createBlogCards = ({ blogs, blogCardClickHandler }) => {
 const BlogsList = (props) => {
   const classes = useStyles()
   return (
-    <Grid className={classes.root} container spacing={3} >
+    <Grid className={classes.root} container spacing={3}>
       { createBlogCards(props) }
-    </Grid >
+    </Grid>
   )
 }
 
