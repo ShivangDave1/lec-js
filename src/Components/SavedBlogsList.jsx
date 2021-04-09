@@ -12,8 +12,8 @@ const SavedBlogsList = () => {
     const classes = useStyles()
 
     return (
-        <Grid className={classes.root} container spacing={3} >
-        </Grid >
+        <Grid className={classes.root} container spacing={3}>
+        </Grid>
     )
 }
 
